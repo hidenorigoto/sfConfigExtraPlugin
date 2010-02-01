@@ -1,0 +1,31 @@
+sfConfigExtraPlugin
+
+ex_****.yml という設定ファイルの設定を自動的に読み込むようにするプラグインのサンプル
+
+*インストール
+
+  通常のプラグインと同様に ProjectConfiguration の setup() 内で有効化します。
+
+    public function setup()
+    {
+        $this->enablePlugins(array(
+            'sfConfigExtraPlugin',
+        ));
+    }
+
+
+*設定
+
+ 1. (app)/config/ex_test.yml に、app.yml と同じ形式で設定を記述します。
+ 2. (app)/config/config_handlers.yml に、1. で作成したファイル用のハンドラー設定を記述します。
+
+  config/ex_test.yml:
+    class:    sfDefineEnvironmentConfigHandler
+    param:    ~
+
+
+*設定値の使用
+
+  sfConfig::get(設定名)
+  設定名のプレフィックスなども、他のコンフィグファイルと同様に設定できます。
+
